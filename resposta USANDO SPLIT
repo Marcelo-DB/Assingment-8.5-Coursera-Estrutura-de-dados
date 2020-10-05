@@ -1,0 +1,29 @@
+#Programador: Marcelo Emanoel
+#Data: 04/10/2020
+#Descrição: Este programa é a reposta do exercício Assingment 8.5
+#Data Structures using Python da Universidade de Michigan, do Coursera
+#Nesse caso, a reposta UTILIZA A FUNÇÃO .split(). 
+#Neste mesmo repositório, utilizei um programa alternativo se usar split()
+#mas com a mesma saída e objetivo do programa atual
+
+#entrada de dados
+fname = input("Enter file name: ")#Entra com as variáveis
+if len(fname) < 1 : fname = "mbox-short.txt"
+
+fh = open(fname)#Lê as variáveis
+
+count = 0
+
+for line in fh:
+    line = line.rstrip()#elimina os espaços dos extremos das linhas
+    
+    if line == " ": continue#se a linha é vazia, continua o programa
+        
+    if line.startswith('From'):#se a linha começa com From: 
+        words = line.split()#guarda a frase em words
+        
+        if(len(words)) > 2:#se o tamanho de words é maior que 2
+            print (words[1])#imprime os e-mails
+            count = count + 1#conta o número de e-mails
+
+print("There were", count, "lines in the file with From as the first word")
